@@ -1,0 +1,396 @@
+{
+  "k2s": [
+    {
+      "name": "Mdfy",
+      "ctbl": [
+        { "key": 24, "str":"VOLUME_UP" },{ "key": 25, "str":"VOLUME_DOWN" },
+        { "key":61, "str": "TAB" },{ "key":62, "str": "SPACE" },{ "key":66, "str": "ENTER" },
+        { "key":59, "str": "SHIFT_LEFT" }, { "key":60, "str": "SHIFT_RIGHT" },
+        { "key":115, "str": "CAPS_LOCK" },
+        { "key":214, "str": "HENKAN" },{ "key": 215, "str":"KATAKANA_HIRAGANA" }, { "key":213, "str": "MUHENKAN" },
+        { "key": 1000, "str":"LONGDISTCODE" },{ "key": 1001, "str":"REPEATCODE" }
+      ]
+    },
+    {
+      "name": "OkanaNone",
+      "ctbl": [
+        { "key":8, "str": "1"},   { "key":9, "str": "2" },
+        { "key":10, "str": "3" }, { "key":11, "str": "4" },
+        { "key":12, "str": "5" }, { "key":13, "str": "6" },
+        { "key":14, "str": "7" }, { "key":15, "str": "8" },
+        { "key":16, "str": "9" }, { "key":7, "str": "0" },
+        { "key":69, "str": "-" }, { "key":70, "str": "^" },
+        { "key":216, "str": "￥" },
+        { "key":29, "str": "う" }, { "key":30, "str": "へ" }, { "key":31, "str": "す" },
+        { "key":32, "str": "て" }, { "key":33, "str": "た" }, { "key":34, "str": "け" },
+        { "key":35, "str": "せ" }, { "key":36, "str": "は" }, { "key":37, "str": "く" },
+        { "key":38, "str": "と" }, { "key":39, "str": "き" }, { "key":40, "str": "い" },
+        { "key":41, "str": "そ" }, { "key":42, "str": "め" }, { "key":43, "str": "つ" },
+        { "key":44, "str": "，" }, { "key":45, "str": "。" }, { "key":46, "str": "こ" },
+        { "key":47, "str": "し" }, { "key":48, "str": "さ" }, { "key":49, "str": "ち" },
+        { "key":50, "str": "ふ" }, { "key":51, "str": "か" }, { "key":52, "str": "ひ" },
+        { "key":53, "str": "ら" }, { "key":54, "str": "．" }, { "key":55, "str": "ね" },
+        { "key":56, "str": "ほ" }, { "key":57, "str": "左Alt" }, { "key":58, "str": "右Alt" },
+        { "key":59, "str": "左シフト" }, { "key":60, "str": "右シフト" },
+        { "key":61, "str": "Tab" }, { "key":62, "str": "●" }, { "key":63, "str": "" },
+        { "key":64, "str": "" }, { "key":65, "str": "" }, { "key":66, "str": "\n" },
+        { "key":67, "str": "BS" }, { "key":68, "str": "" },{ "key":71, "str": "、" },
+        { "key":72, "str": "゛" },{ "key":73, "str": "-" },{ "key":74, "str": "ん" },
+        { "key":75, "str": "-" }, { "key":76, "str": "・" }, { "key":111, "str": "ESC" },
+        { "key":217, "str": "￥" },
+        { "key":214, "str": "●" }, { "key":213, "str": "〇" }
+      ]
+    },
+    {
+      "name": "OkanaLoya",
+      "ctbl": [
+        { "key":8, "str": "？" },        { "key":9, "str": "／" },
+        { "key":10, "str": "～" },        { "key":11, "str": "「" },
+        { "key":12, "str": "」" },        { "key":13, "str": "［］" },
+        { "key":14, "str": "＋" },        { "key":15, "str": "（）" },
+        { "key":16, "str": "●" },        { "key":7, "str": "：" },
+        { "key":69, "str": "＝" },        { "key":70, "str": "￣" },
+        { "key":216, "str": "｜" },
+        { "key":29, "str": "を" }, { "key":30, "str": "ぃ" },  { "key":31, "str": "ろ" },
+        { "key":32, "str": "な" }, { "key":33, "str": "り" },  { "key":34, "str": "ゅ" },
+        { "key":35, "str": "も" }, { "key":36, "str": "ば" },  { "key":37, "str": "ぐ" },
+        { "key":38, "str": "ど" }, { "key":39, "str": "ぎ" },  { "key":40, "str": "ぽ" },
+        { "key":41, "str": "ぞ" }, { "key":42, "str": "ぷ" },  { "key":43, "str": "づ" },
+        { "key":44, "str": "ぴ" }, { "key":45, "str": "ぁ" },  { "key":46, "str": "ゃ" },
+        { "key":47, "str": "あ" }, { "key":48, "str": "れ" },  { "key":49, "str": "ぢ" },
+        { "key":50, "str": "や" }, { "key":51, "str": "え" },  { "key":52, "str": "ー" },
+        { "key":53, "str": "ぱ" }, { "key":54, "str": "ぅ" },  { "key":55, "str": "ぺ" },
+        { "key":56, "str": "ぼ" }, { "key":57, "str": "" },    { "key":58, "str": "" },
+        { "key":59, "str": "" },   { "key":60, "str": "" },    { "key":61, "str": "" },
+        { "key":62, "str": "" },   { "key":63, "str": "" },    { "key":64, "str": "" },
+        { "key":65, "str": "" },   { "key":66, "str": "\n" },  { "key":67, "str": "" },
+        { "key":68, "str": "" },   { "key":71, "str": "、" },  { "key":72, "str": "゛" },
+        { "key":73, "str": "" },   { "key":74, "str": "" },    { "key":75, "str": "" },
+        { "key":76, "str": "" },   { "key":111, "str": "" },   { "key":217, "str": "" }
+      ]
+    },
+    {
+      "name": "OkanaRoya",
+      "ctbl": [
+        { "key":8, "str": "！" },        { "key":9, "str": "―" },
+        { "key":10, "str": "…" },        { "key":11, "str": "「」" },
+        { "key":12, "str": "＊" },        { "key":13, "str": "［" },
+        { "key":14, "str": "］" },        { "key":15, "str": "（" },
+        { "key":16, "str": "）" },        { "key":7, "str": "『" },
+        { "key":69, "str": "』" },        { "key":70, "str": "｛" },
+        { "key":216, "str": "｝" },
+        { "key":29, "str": "ヴ" },  { "key":30, "str": "べ" },  { "key":31, "str": "ず" },
+        { "key":32, "str": "で" },  { "key":33, "str": "だ" },  { "key":34, "str": "げ" },
+        { "key":35, "str": "ぜ" },  { "key":36, "str": "み" },  { "key":37, "str": "る" },
+        { "key":38, "str": "お" },  { "key":39, "str": "の" },  { "key":40, "str": "ょ" },
+        { "key":41, "str": "ゆ" },  { "key":42, "str": "ぬ" },  { "key":43, "str": "ま" },
+        { "key":44, "str": "ぇ" },  { "key":45, "str": "ゐ" },  { "key":46, "str": "ご" },
+        { "key":47, "str": "じ" },  { "key":48, "str": "ざ" },  { "key":49, "str": "に" },
+        { "key":50, "str": "ぶ" },  { "key":51, "str": "が" },  { "key":52, "str": "び" },
+        { "key":53, "str": "よ" },  { "key":54, "str": "ゑ" },  { "key":55, "str": "む" },
+        { "key":56, "str": "わ" },  { "key":57, "str": "" },    { "key":58, "str": "" },
+        { "key":59, "str": "" },    { "key":60, "str": "" },    { "key":61, "str": "" },
+        { "key":62, "str": "" },    { "key":63, "str": "" },    { "key":64, "str": "" },
+        { "key":65, "str": "" },    { "key":66, "str": "\n" },  { "key":67, "str": "" },
+        { "key":68, "str": "" },    { "key":71, "str": "、" },  { "key":72, "str": "゜" },
+        { "key":73, "str": "" },    { "key":74, "str": "っ" },  { "key":75, "str": "" },
+        { "key":76, "str": "ぉ" },  { "key":111, "str": "" },   { "key":217, "str": "" }
+      ]
+    },
+    {
+      "name": "OkanaHShift",
+      "ctbl": [
+        { "key":8, "str": "" },        { "key":9, "str": "" },
+        { "key":10, "str": "" },        { "key":11, "str": "" },
+        { "key":12, "str": "" },        { "key":13, "str": "" },
+        { "key":14, "str": "" },        { "key":15, "str": "" },
+        { "key":16, "str": "" },        { "key":7, "str": "" },
+        { "key":69, "str": "" },        { "key":70, "str": "" },
+        { "key":216, "str": "" },
+        { "key":29, "str": "" },  { "key":30, "str": "ぺ" },  { "key":31, "str": "" },
+        { "key":32, "str": "" },  { "key":33, "str": "" },    { "key":34, "str": "" },
+        { "key":35, "str": "" },  { "key":36, "str": "ぱ" },  { "key":37, "str": "" },
+        { "key":38, "str": "" },  { "key":39, "str": "" },    { "key":40, "str": "ゐ" },
+        { "key":41, "str": "" },  { "key":42, "str": "" },    { "key":43, "str": "" },
+        { "key":44, "str": "" },  { "key":45, "str": "" },    { "key":46, "str": "" },
+        { "key":47, "str": "" },  { "key":48, "str": "" },    { "key":49, "str": "" },
+        { "key":50, "str": "ぷ" },{ "key":51, "str": "ゑ" },    { "key":52, "str": "ぴ" },
+        { "key":53, "str": "" },  { "key":54, "str": "" },    { "key":55, "str": "" },
+        { "key":56, "str": "ぽ" },{ "key":57, "str": "" },    { "key":58, "str": "" },
+        { "key":59, "str": "" },  { "key":60, "str": "" },    { "key":61, "str": "" },
+        { "key":62, "str": "　" },{ "key":63, "str": " " },   { "key":64, "str": "" },
+        { "key":65, "str": "" },  { "key":66, "str": "\n" },  { "key":67, "str": "" },
+        { "key":68, "str": "" },  { "key":71, "str": "" },    { "key":72, "str": "" },
+        { "key":73, "str": "" },  { "key":74, "str": "" },    { "key":75, "str": "" },
+        { "key":76, "str": "" },  { "key":111, "str": "" },   { "key":217, "str": "" }
+      ]
+    },
+    {
+      "name": "EijiNone",
+      "ctbl": [
+        { "key":8, "str": "1" },  { "key":9, "str": "2" },
+        { "key":10, "str": "3" }, { "key":11, "str": "4" },
+        { "key":12, "str": "5" }, { "key":13, "str": "6" },
+        { "key":14, "str": "7" }, { "key":15, "str": "8" },
+        { "key":16, "str": "9" }, { "key":7, "str": "0" },
+        { "key":69, "str": "-" }, { "key":70, "str": "^" },
+        { "key":216, "str": "\\" },
+        { "key":29, "str": "a" }, { "key":30, "str": "b" }, { "key":31, "str": "c" },
+        { "key":32, "str": "d" }, { "key":33, "str": "e" }, { "key":34, "str": "f" },
+        { "key":35, "str": "g" }, { "key":36, "str": "h" }, { "key":37, "str": "i" },
+        { "key":38, "str": "j" }, { "key":39, "str": "k" }, { "key":40, "str": "l" },
+        { "key":41, "str": "m" }, { "key":42, "str": "n" }, { "key":43, "str": "o" },
+        { "key":44, "str": "p" }, { "key":45, "str": "q" }, { "key":46, "str": "r" },
+        { "key":47, "str": "s" }, { "key":48, "str": "t" }, { "key":49, "str": "u" },
+        { "key":50, "str": "v" }, { "key":51, "str": "w" }, { "key":52, "str": "x" },
+        { "key":53, "str": "y" }, { "key":54, "str": "z" }, { "key":55, "str": "," },
+        { "key":56, "str": "." }, { "key":57, "str": "" },  { "key":58, "str": "" },
+        { "key":59, "str":"Lshift" },{ "key":60,"str":"Rshift" },{ "key":61,"str":"" },
+        { "key":62, "str": " " }, { "key":63, "str": "" },  { "key":64, "str": "" },
+        { "key":65, "str": "" },  { "key":66, "str": "\n" },{ "key":67, "str": "" },
+        { "key":68, "str": "" },  { "key":71, "str": "@" }, { "key":72, "str": "[" },
+        { "key":73, "str": "]" }, { "key":74, "str": ";" }, { "key":75, "str": ":" },
+        { "key":76, "str": "/" }, { "key":111, "str": "" }, { "key":217, "str": "\\" },
+        { "key":115, "str": "CapsLock" },{ "key": 215, "str":"KATAKANA_HIRAGANA" },
+        { "key": 24, "str":"VOLUME_UP" },{ "key": 25, "str":"VOLUME_DOWN" }
+      ]
+    },
+    {
+          "name": "EijiShift",
+          "ctbl": [
+            { "key":8, "str": "!" },            { "key":9, "str": "\"" },
+            { "key":10, "str": "#" },           { "key":11, "str": "$" },
+            { "key":12, "str": "%" },           { "key":13, "str": "&" },
+            { "key":14, "str": "'" },           { "key":15, "str": "(" },
+            { "key":16, "str": ")" },           { "key":7, "str": ":" },
+            { "key":69, "str": "=" },           { "key":70, "str": "~" },
+            { "key":216, "str": "|" },
+            { "key":29, "str": "A" },  { "key":30, "str": "B" },  { "key":31, "str": "C" },
+            { "key":32, "str": "D" },  { "key":33, "str": "E" },  { "key":34, "str": "F" },
+            { "key":35, "str": "G" },  { "key":36, "str": "H" },  { "key":37, "str": "I" },
+            { "key":38, "str": "J" },  { "key":39, "str": "K" },  { "key":40, "str": "L" },
+            { "key":41, "str": "M" },  { "key":42, "str": "N" },  { "key":43, "str": "O" },
+            { "key":44, "str": "P" },  { "key":45, "str": "Q" },  { "key":46, "str": "R" },
+            { "key":47, "str": "S" },  { "key":48, "str": "T" },  { "key":49, "str": "U" },
+            { "key":50, "str": "V" },  { "key":51, "str": "W" },  { "key":52, "str": "X" },
+            { "key":53, "str": "Y" },  { "key":54, "str": "Z" },  { "key":55, "str": "<" },
+            { "key":56, "str": ">" },  { "key":57, "str": "" },   { "key":58, "str": "" },
+            { "key":59, "str": "" },   { "key":60, "str": "" },   { "key":61, "str": "" },
+            { "key":62, "str": " " },  { "key":63, "str": "" },   { "key":64, "str": "" },
+            { "key":65, "str": "" },   { "key":66, "str": "\n" }, { "key":67, "str": "" },
+            { "key":68, "str": "" },   { "key":71, "str": "`" },  { "key":72, "str": "{" },
+            { "key":73, "str": "}" },  { "key":74, "str": "+" },  { "key":75, "str": "*" },
+            { "key":76, "str": "?" },  { "key":111, "str": "" },  { "key":217, "str": "_" }
+          ]
+        }
+  ],
+  "codepage": [
+    {
+      "name": "Eiji",
+      "kgroup": [
+        {"name": "Shift", "in":[ "SHIFT_LEFT","SHIFT_RIGHT" ], "ctbl":"Mdfy"},
+        {"name": "Caps", "in":[ "CAPS_LOCK" ], "ctbl":"Mdfy" },
+        {"name": "Kana", "in":[ "KATAKANA_HIRAGANA" ], "ctbl":"Mdfy" },
+        {"name": "Char", "notin":[ "CAPS_LOCK","SHIFT_LEFT","SHIFT_RIGHT","KATAKANA_HIRAGANA" ], "ctbl":"Mdfy" }
+      ],
+      "rules": [
+        {
+          "stat": ["Char"],
+          "out": [{ "ctbl": "EijiNone", "cno": 0}],
+          "rmno": [0]
+        },
+        {
+          "stat": ["Shift","Char"],
+          "out": [{ "ctbl": "EijiShift", "cno": 1}],
+          "rmno": [1]
+        },
+        {
+          "stat": ["Shift","Caps"],
+          "rmno": [1],
+          "gopage": "ECaps"
+        },
+        {
+          "stat": ["Kana"],
+          "rmno": [0],
+          "gopage": "OKana"
+        }
+      ]
+    },
+    {
+      "name": "ECaps",
+      "kgroup": [
+        {"name": "Shift", "in":[ "SHIFT_LEFT","SHIFT_RIGHT" ], "ctbl":"Mdfy"},
+        {"name": "Caps", "in":[ "CAPS_LOCK" ], "ctbl":"Mdfy" },
+        {"name": "Kana", "in":[ "KATAKANA_HIRAGANA" ], "ctbl":"Mdfy" },
+        {"name": "Char", "notin":[ "CAPS_LOCK","SHIFT_LEFT","SHIFT_RIGHT","KATAKANA_HIRAGANA" ], "ctbl":"Mdfy" }
+      ],
+      "rules": [
+        {
+          "stat": ["Char"],
+          "out": [{ "ctbl": "EijiShift", "cno": 0}],
+          "rmno": [0]
+        },
+        {
+          "stat": ["Shift","Char"],
+          "out": [{ "ctbl": "EijiNone", "cno": 1}],
+          "rmno": [1]
+        },
+        {
+          "stat": ["Shift","Caps"],
+          "rmno": [1],
+          "gopage": "Eiji"
+        },
+        {
+          "stat": ["Kana"],
+          "rmno": [0],
+          "gopage": "OKana"
+        }
+      ]
+    },
+    {
+      "name": "OKana",
+      "kgroup": [
+        {"name": "Shift", "in":[ "SHIFT_LEFT","SHIFT_RIGHT" ], "ctbl":"Mdfy"},
+        {"name": "Caps", "in":[ "CAPS_LOCK" ], "ctbl":"Mdfy" },
+        {"name": "Loya", "in":[ "MUHENKAN" ], "ctbl":"Mdfy"},
+        {"name": "Roya", "in":[ "HENKAN", "SPACE" ], "ctbl":"Mdfy" },
+        {"name": "Func", "in":[ "LONGDISTCODE" ], "ctbl":"Mdfy" },
+        {"name": "Rep", "in":[ "REPEATCODE" ], "ctbl":"Mdfy" },
+        {"name": "Char", "notin":[ "HENKAN","MUHENKAN","SPACE","CAPS_LOCK",
+          "SHIFT_LEFT","SHIFT_RIGHT","REPEATCODE", "LONGDISTCODE"  ], "ctbl":"Mdfy" }
+      ],
+      "rules": [
+        {
+          "stat": ["Char","_Char"],
+          "out": [{ "ctbl": "OkanaNone", "cno": 0}],
+          "rmno": [1,0]
+        },
+        {
+          "stat": ["Char","Rep"],
+          "out": [{ "ctbl": "OkanaNone", "cno": 0}],
+          "rmno": [1]
+        },
+        {
+          "stat": ["Char","Char"],
+          "out": [{ "ctbl": "OkanaNone", "cno": 0}],
+          "rmno": [0]
+        },
+        {
+          "stat": ["Char","Roya","_Char"],
+          "out": [{"ctbl": "OkanaRoya", "cno":0 }],
+          "rmno": [1,0]
+        },
+        {
+          "stat": ["Char","Roya","_Roya"],
+          "out": [{"ctbl": "OkanaRoya", "cno":0 }],
+          "rmno": [1,0]
+        },
+        {
+          "stat": ["Char","Roya","Rep"],
+          "out": [{"ctbl": "OkanaRoya", "cno":0 }],
+          "rmno": [2]
+        },
+        {
+          "stat": ["Roya","Char","Rep"],
+          "out": [{"ctbl": "OkanaRoya", "cno":1 }],
+          "rmno": [2]
+        },
+        {
+          "stat": ["Char","Loya","Rep"],
+          "out": [{"ctbl": "OkanaLoya", "cno":0 }],
+          "rmno": [2]
+        },
+        {
+          "stat": ["Loya","Char","Rep"],
+          "out": [{"ctbl": "OkanaLoya", "cno":1 }],
+          "rmno": [2]
+        },
+        {
+          "stat": ["Char","Roya","Char"],
+          "out": [{"ctbl": "OkanaNone", "cno":0 }],
+          "rmno": [0]
+        },
+        {
+          "stat": ["Char","Roya", "Func"],
+          "out": [{"ctbl": "OkanaRoya", "cno":0 }],
+          "rmno": [2,1,0]
+        },
+        {
+          "stat": ["Char","Roya", "_Func"],
+          "out": [{"ctbl": "OkanaNone", "cno":0 },{"ctbl": "OkanaNone", "cno":1} ],
+          "rmno": [2,1,0]
+        },
+        {
+          "stat": ["Char","Loya", "_Func"],
+          "out": [{"ctbl": "OkanaNone", "cno":0 },{"ctbl": "OkanaNone", "cno":1} ],
+          "rmno": [2,1,0]
+        },
+        {
+          "stat": ["Char","Loya","_Char"],
+          "out": [{"ctbl": "OkanaLoya", "cno":0 }],
+          "rmno": [1,0]
+        },
+        {
+          "stat": ["Char","Loya","_Loya"],
+          "out": [{"ctbl": "OkanaLoya", "cno":0 }],
+          "rmno": [1,0]
+        },
+        {
+          "stat": ["Char","Loya","Char"],
+          "out": [{"ctbl": "OkanaNone", "cno":0 }],
+          "rmno": [0]
+        },
+        {
+          "stat": ["Char","Loya", "Func"],
+          "out": [{"ctbl": "OkanaLoya", "cno":0 }],
+          "rmno": [2,1,0]
+        },
+        {
+          "stat": ["Loya","Char"],
+          "out": [{"ctbl": "OkanaLoya", "cno":1 }],
+          "rmno": [1,0]
+        },
+        {
+          "stat": ["Roya","Char"],
+          "out": [{"ctbl": "OkanaRoya", "cno":1 }],
+          "rmno": [1,0]
+        },
+        {
+          "stat": ["Loya","_Loya"],
+          "out": [{"ctbl": "OkanaNone", "cno":0 }],
+          "rmno": [1,0]
+        },
+        {
+          "stat": ["Roya","_Roya"],
+          "out": [{"ctbl": "OkanaNone", "cno":0 }],
+          "rmno": [1,0]
+        },
+        {
+          "stat": ["Shift","Char"],
+          "out": [{ "ctbl": "OkanaHShift", "cno": 1}],
+          "rmno": [1]
+        },
+        {
+          "stat": ["Shift","Roya"],
+          "out": [{ "ctbl": "EijiNone", "cno": 1}],
+          "rmno": [1]
+        },
+        {
+          "stat": ["Caps"],
+          "rmno": [0],
+          "gopage": "Eiji"
+        }
+      ]
+    }
+  ],
+  "s2h": [
+    {
+      "name": "hid",
+      "tbl": [
+        {
+          "str": "a", "seq": [ 0, 1 ]
+        }
+      ]
+    }
+  ]
+}
