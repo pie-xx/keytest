@@ -75,18 +75,16 @@ public class HidEngine {
                 String cstr = cdef.getString("str");
                 int key = cdef.getInt("key");
                 if( str.equals(cstr)){
-                //    Log.d(TAG,str+"="+String.valueOf(key));
                     return key;
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
-                Log.d(TAG,str+"="+e.toString());
                 return -1;
             }
         }
-        Log.d(TAG,str+"=notFound");
         return -1;
     }
+
     String code2str(int kcode, JSONArray ctbl ){
         for( int n=0; n < ctbl.length(); ++n){
             try {
@@ -120,7 +118,6 @@ public class HidEngine {
     }
 
     boolean isSameType( String statEvname, HidKeyEvent kev ){
-        //Log.d(TAG,"isSameType "+statEvname+" "+kev.toString());
         if( kev==null) {
             return false;
         }
@@ -160,11 +157,9 @@ public class HidEngine {
                 String ktype = ktypes.getString(n);
                 sb.append(ktype+"("+String.valueOf(str2code(ktype, ctbl))+"),");
                 if( str2code(ktype, ctbl)==kev.keycode ){
-                    //Log.d(TAG,"true "+String.valueOf(kev.keycode)+" in "+sb.toString());
                     return true;
                 }
             }
-            //Log.d(TAG,String.valueOf(kev.keycode)+" !in "+sb.toString());
             return false;
         } catch (JSONException e) {
             try {
@@ -173,17 +168,14 @@ public class HidEngine {
                     String ktype = ktypes.getString(n);
                     sb.append(ktype+"("+String.valueOf(str2code(ktype, ctbl))+"),");
                     if( str2code(ktype, ctbl)==kev.keycode ){
-                        //Log.d(TAG,String.valueOf(kev.keycode)+" !notin "+sb.toString());
                         return false;
                     }
                 }
-                //Log.d(TAG,"true "+String.valueOf(kev.keycode)+" notin "+sb.toString());
                 return true;
             } catch (JSONException ex) {
                 ex.printStackTrace();
             }
         }
-        //Log.d(TAG,String.valueOf(kev.keycode)+" other "+sb.toString());
         return false;
     }
 
@@ -203,7 +195,6 @@ public class HidEngine {
             for( int n=0; n < statEvs.length(); ++n ){
                 sb.append(statEvs.getString(n)+",");
             }
-            Log.d(TAG, "checkRules "+sb.toString());
             return true;
         } catch (JSONException e) {
             e.printStackTrace();
@@ -219,8 +210,6 @@ public class HidEngine {
                 JSONObject rule =(JSONObject) rules.get(n);
                 JSONArray statsEvs = rule.getJSONArray("stat");
                 if( checkRules(statsEvs) ){
-                    Log.d(TAG, "mStat "+mStat.dumpkeyarray() );
-                    Log.d(TAG, "mMon "+mMon.dumpkeyarray() );
                     try {
                         JSONArray outary = rule.getJSONArray("out");
                         for( int m=0; m < outary.length(); ++m) {
@@ -230,10 +219,8 @@ public class HidEngine {
                             JSONArray k2s = defs.getJSONArray("k2s");
                             JSONArray ctbl = getObjFromArrayByName(k2s, ctblename).getJSONArray("ctbl");
                             HidKeyEvent cmpkev = mStat.get(cno);
-                            Log.d(TAG, "mStat(" + String.valueOf(cno) + ")=key(" + String.valueOf(cmpkev.keycode) + ")/" + ctblename);
                             if (cmpkev != null) {
                                 mOutput = mOutput + code2str(cmpkev.keycode, ctbl);
-                                Log.d(TAG, "mOutput=" + mOutput);
                             }
                         }
                     }catch (JSONException e){
@@ -295,7 +282,6 @@ class KeyInEventArray extends ArrayList<HidKeyEvent> {
         try {
             return super.get(index);
         }catch (java.lang.IndexOutOfBoundsException e){
-            //return new HidKeyEvent(false, -1);
             return null;
         }
     }
@@ -305,7 +291,6 @@ class KeyInEventArray extends ArrayList<HidKeyEvent> {
         try {
             return super.remove(index);
         }catch (java.lang.IndexOutOfBoundsException e){
-        //    return new HidKeyEvent(false, -1);
             return null;
         }
     }
@@ -313,7 +298,6 @@ class KeyInEventArray extends ArrayList<HidKeyEvent> {
     void push( HidKeyEvent kv ){
         int inx = search( kv.keycode );
         if( kv.ismake ) {
-            Log.d(TAG,"make inx="+String.valueOf(inx));
             if (inx == -1) {
                 // どっちが近いか
                 if( size() >= 2){
@@ -322,23 +306,20 @@ class KeyInEventArray extends ArrayList<HidKeyEvent> {
                     long t1 = get(cinx).t;
                     long t2 = kv.t;
 
-                    if( t2 - t1 > t1 - t0){
+                    if( t1 - t0 < t2 - t1 ){
                         add( new HidKeyEvent( true, LONGDISTCODE) );
                     }
                 }
                 add( kv );
             }else{
-                //todo: repeat key
                 Log.d(TAG,"SameKey");
                 int cinx = size() - 1;
                 long t1 = get(cinx).t;
                 if( kv.t - t1 > REPEATLIMIT){
                     add( new HidKeyEvent( true, REPEATCODE) );
-                    Log.d(TAG, "REPEATCODE");
                 }
             }
         }else{
-            Log.d(TAG,"break inx="+String.valueOf(inx)+" size()="+String.valueOf(size()));
             if( inx != -1){
                 if( size() >= 2){
                     int cinx = size() - 1;
@@ -346,8 +327,8 @@ class KeyInEventArray extends ArrayList<HidKeyEvent> {
                     long t1 = get(cinx).t;
                     long t2 = kv.t;
 
-                    if( t2 - t1 < t1 - t0){
-                        add( new HidKeyEvent( false, LONGDISTCODE) );
+                    if( t1 - t0 < t2 - t1 ){
+                        add( new HidKeyEvent( false, LONGDISTCODE ) );
                     }
                 }
                 add( kv );
@@ -404,21 +385,23 @@ class HidKeyEvent {
     public int keycode;
     public long t;
 
-    HidKeyEvent( boolean mb, int kc ) {
+    HidKeyEvent(boolean mb, int kc) {
         ismake = mb;
         keycode = kc;
         t = System.currentTimeMillis();
     }
 
-    public String toString(){
+    public String toString() {
         StringBuffer sb = new StringBuffer();
-        if( ismake ){
+        if (ismake) {
             sb.append("↓");
-        }else{
+        } else {
             sb.append("↑");
         }
         sb.append(String.valueOf(keycode));
-        sb.append("("+String.valueOf(t)+"); ");
+        sb.append("(");
+        sb.append(String.valueOf(t));
+        sb.append("); ");
         return sb.toString();
     }
 }
