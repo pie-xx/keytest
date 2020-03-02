@@ -281,11 +281,6 @@
           "rmno": [1,0]
         },
         {
-          "stat": ["Char","Roya","_Roya"],
-          "out": [{"ctbl": "OkanaRoya", "cno":0 }],
-          "rmno": [1,0]
-        },
-        {
           "stat": ["Char","Roya","Rep"],
           "out": [{"ctbl": "OkanaRoya", "cno":0 }],
           "rmno": [2]
@@ -316,14 +311,19 @@
           "rmno": [2,1,0]
         },
         {
-          "stat": ["Char","Roya", "_Func"],
+          "stat": ["Char","Roya","_Roya"],
           "out": [{"ctbl": "OkanaNone", "cno":0 },{"ctbl": "OkanaNone", "cno":1} ],
           "rmno": [2,1,0]
         },
         {
+          "stat": ["Char","Roya", "_Func"],
+          "out": [{"ctbl": "OkanaRoya", "cno":0 }],
+          "rmno": [1,0]
+        },
+        {
           "stat": ["Char","Loya", "_Func"],
-          "out": [{"ctbl": "OkanaNone", "cno":0 },{"ctbl": "OkanaNone", "cno":1} ],
-          "rmno": [2,1,0]
+          "out": [{"ctbl": "OkanaLoya", "cno":0 }],
+          "rmno": [1,0]
         },
         {
           "stat": ["Char","Loya","_Char"],
@@ -332,8 +332,8 @@
         },
         {
           "stat": ["Char","Loya","_Loya"],
-          "out": [{"ctbl": "OkanaLoya", "cno":0 }],
-          "rmno": [1,0]
+          "out": [{"ctbl": "OkanaNone", "cno":0 },{"ctbl": "OkanaNone", "cno":1} ],
+          "rmno": [2,1,0]
         },
         {
           "stat": ["Char","Loya","Char"],
