@@ -286,6 +286,21 @@
           "rmno": [2]
         },
         {
+          "stat": ["Roya","Char","_Roya"],
+          "out": [{"ctbl": "OkanaRoya", "cno":1 }],
+          "rmno": [1,0]
+        },
+        {
+          "stat": ["Roya","Char","_Char"],
+          "out": [{"ctbl": "OkanaRoya", "cno":1 }],
+          "rmno": [2,1,0]
+        },
+        {
+          "stat": ["Roya","Char","Char"],
+          "out": [{"ctbl": "OkanaRoya", "cno":1 }],
+          "rmno": [1,0]
+        },
+        {
           "stat": ["Roya","Char","Rep"],
           "out": [{"ctbl": "OkanaRoya", "cno":1 }],
           "rmno": [2]
@@ -293,11 +308,6 @@
         {
           "stat": ["Char","Loya","Rep"],
           "out": [{"ctbl": "OkanaLoya", "cno":0 }],
-          "rmno": [2]
-        },
-        {
-          "stat": ["Loya","Char","Rep"],
-          "out": [{"ctbl": "OkanaLoya", "cno":1 }],
           "rmno": [2]
         },
         {
@@ -341,19 +351,29 @@
           "rmno": [0]
         },
         {
-          "stat": ["Char","Loya", "Func"],
+          "stat": ["Char","Loya","Func"],
           "out": [{"ctbl": "OkanaLoya", "cno":0 }],
           "rmno": [2,1,0]
         },
         {
-          "stat": ["Loya","Char"],
+          "stat": ["Loya","Char","_Loya"],
+          "out": [{"ctbl": "OkanaLoya", "cno":1 }],
+          "rmno": [2,1,0]
+        },
+        {
+          "stat": ["Loya","Char","_Char"],
           "out": [{"ctbl": "OkanaLoya", "cno":1 }],
           "rmno": [1,0]
         },
         {
-          "stat": ["Roya","Char"],
-          "out": [{"ctbl": "OkanaRoya", "cno":1 }],
+          "stat": ["Loya","Char","Char"],
+          "out": [{"ctbl": "OkanaLoya", "cno":1 }],
           "rmno": [1,0]
+        },
+        {
+          "stat": ["Loya","Char","Rep"],
+          "out": [{"ctbl": "OkanaLoya", "cno":1 }],
+          "rmno": [2]
         },
         {
           "stat": ["Loya","_Loya"],
