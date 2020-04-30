@@ -45,10 +45,12 @@ public class HidEngine {
     }
 
     void onKeyDown( boolean ismake, int keycode ){
-        mMon.push( new HidKeyEvent( ismake, keycode));
+        mMon.push( new AndroidKeyEvent( ismake, keycode));
+        Log.d(TAG,"onKeyDown mMon-"+mMon.toString());
         mMon.collapse();
 
-        mStat.push( new HidKeyEvent( ismake, keycode));
+        mStat.push( new AndroidKeyEvent( ismake, keycode));
+        Log.d(TAG,"onKeyDown mStat-"+mStat.toString());
         eval();
         mStat.collapse();
     }
@@ -117,7 +119,7 @@ public class HidEngine {
         return null;
     }
 
-    boolean isSameType( String statEvname, HidKeyEvent kev ){
+    boolean isSameType( String statEvname, AndroidKeyEvent kev ){
         if( kev==null) {
             return false;
         }
@@ -182,7 +184,7 @@ public class HidEngine {
     boolean checkRules( JSONArray statEvs){
         try {
             for( int n=0; n < statEvs.length(); ++n ){
-                HidKeyEvent cmpkev = mStat.get(n);
+                AndroidKeyEvent cmpkev = mStat.get(n);
                 if( cmpkev == null ){
                     return false;
                 }
@@ -218,10 +220,11 @@ public class HidEngine {
                             int cno = outprm.getInt("cno");
                             JSONArray k2s = defs.getJSONArray("k2s");
                             JSONArray ctbl = getObjFromArrayByName(k2s, ctblename).getJSONArray("ctbl");
-                            HidKeyEvent cmpkev = mStat.get(cno);
+                            AndroidKeyEvent cmpkev = mStat.get(cno);
                             if (cmpkev != null) {
                                 mOutput = mOutput + code2str(cmpkev.keycode, ctbl);
                             }
+                            Log.d(TAG,mOutput +"-"+statsEvs.toString());
                         }
                     }catch (JSONException e){
                         String pagename = rule.getString("gopage");
@@ -244,6 +247,30 @@ public class HidEngine {
     String getOutput(){
         return mOutput;
     }
+    String getHid(){
+        return StrToHID( mOutput);
+    }
+
+    String StrToHID( String str ){
+        StringBuffer rtv = new StringBuffer();
+        try {
+            JSONObject s2h = defs.getJSONObject("s2h");
+            JSONArray romaji = s2h.getJSONArray("romaji");
+            for( int n=0; n < romaji.length(); ++n){
+                JSONObject rt = romaji.getJSONObject(n);
+                if(str.startsWith(rt.getString("str"))){
+                    JSONArray ksq = rt.getJSONArray("seq");
+                    for( int m=0; m < ksq.length(); ++m){
+                        rtv.append( ksq.getString(m));
+                    }
+                    return rtv.toString();
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return "--";
+    }
 
     ////////////////////////////////////////////////////
     void setCodePage(String pagename){
@@ -260,25 +287,28 @@ public class HidEngine {
     }
 }
 
-class HidStateMachine{
+class HidKeyMachine{
 
-    HidStateMachine(){
+    HidKeyMachine(){
 
     }
 }
 
-class KeyInEventArray extends ArrayList<HidKeyEvent> {
+class HidKey {
+
+}
+
+
+class KeyInEventArray extends ArrayList<AndroidKeyEvent> {
     final static String TAG = "HidEngine";
     static final int LONGDISTCODE = 1000;
     static final int REPEATCODE = 1001;
+    static final int LONGPUSHCODE = 1002;
     static long REPEATLIMIT = 500;
-
-    KeyInEventArray() {
-;
-    }
+    static long LONGLIMIT = 800;
 
     @Override
-    public HidKeyEvent get(int index){
+    public AndroidKeyEvent get(int index){
         try {
             return super.get(index);
         }catch (java.lang.IndexOutOfBoundsException e){
@@ -287,7 +317,7 @@ class KeyInEventArray extends ArrayList<HidKeyEvent> {
     }
 
     @Override
-    public HidKeyEvent remove(int index){
+    public AndroidKeyEvent remove(int index){
         try {
             return super.remove(index);
         }catch (java.lang.IndexOutOfBoundsException e){
@@ -295,7 +325,7 @@ class KeyInEventArray extends ArrayList<HidKeyEvent> {
         }
     }
 
-    void push( HidKeyEvent kv ){
+    void push( AndroidKeyEvent kv ){
         int inx = search( kv.keycode );
         if( kv.ismake ) {
             if (inx == -1) {
@@ -307,7 +337,7 @@ class KeyInEventArray extends ArrayList<HidKeyEvent> {
                     long t2 = kv.t;
 
                     if( t1 - t0 < t2 - t1 ){
-                        add( new HidKeyEvent( true, LONGDISTCODE) );
+                        add( new AndroidKeyEvent( true, LONGDISTCODE) );
                     }
                 }
                 add( kv );
@@ -316,7 +346,7 @@ class KeyInEventArray extends ArrayList<HidKeyEvent> {
                 int cinx = size() - 1;
                 long t1 = get(cinx).t;
                 if( kv.t - t1 > REPEATLIMIT){
-                    add( new HidKeyEvent( true, REPEATCODE) );
+                    add( new AndroidKeyEvent( true, REPEATCODE) );
                 }
             }
         }else{
@@ -328,7 +358,13 @@ class KeyInEventArray extends ArrayList<HidKeyEvent> {
                     long t2 = kv.t;
 
                     if( t1 - t0 < t2 - t1 ){
-                        add( new HidKeyEvent( false, LONGDISTCODE ) );
+                        add( new AndroidKeyEvent( false, LONGDISTCODE ) );
+                    }
+                }else{
+                    if( size() == 1 ) {
+                        if (kv.t - get(0).t > LONGLIMIT) {
+                            add(new AndroidKeyEvent(false, LONGPUSHCODE));
+                        }
                     }
                 }
                 add( kv );
@@ -347,7 +383,7 @@ class KeyInEventArray extends ArrayList<HidKeyEvent> {
 
     void collapse(){
         for( int n = size() - 1; n >= 0; --n ){
-            HidKeyEvent kv = get(n);
+            AndroidKeyEvent kv = get(n);
             if( kv.keycode == LONGDISTCODE ||  kv.keycode == REPEATCODE){
                 remove( n );
             }else {
@@ -365,9 +401,9 @@ class KeyInEventArray extends ArrayList<HidKeyEvent> {
 
     String dumpkeyarray(){
         StringBuffer sb = new StringBuffer();
-        Iterator<HidKeyEvent> ti = iterator();
+        Iterator<AndroidKeyEvent> ti = iterator();
         while( ti.hasNext() ){
-            HidKeyEvent ko = ti.next();
+            AndroidKeyEvent ko = ti.next();
             sb.append(String.format("%02x", ko.keycode));
             if( ko.ismake ) {
                 sb.append("↓");
@@ -380,12 +416,12 @@ class KeyInEventArray extends ArrayList<HidKeyEvent> {
     }
 }
 
-class HidKeyEvent {
+class AndroidKeyEvent {
     public boolean ismake;
     public int keycode;
     public long t;
 
-    HidKeyEvent(boolean mb, int kc) {
+    AndroidKeyEvent(boolean mb, int kc) {
         ismake = mb;
         keycode = kc;
         t = System.currentTimeMillis();

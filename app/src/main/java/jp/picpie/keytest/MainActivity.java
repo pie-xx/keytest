@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     static final String TAG = "keytest";
     static KeyEventMan kem;
     TextView mKeyDisp;
+    TextView mHidDisp;
     TextView mKeyCode;
     Button mEijiBtn;
     Button mKanaBtn;
@@ -29,12 +30,20 @@ public class MainActivity extends AppCompatActivity {
         final KeyEventMan _kem = kem;
         mKeyDisp = (TextView)findViewById(R.id.keydisp);
         mKeyCode = (TextView)findViewById(R.id.keycode);
+        mHidDisp = (TextView)findViewById(R.id.keydisp2);
         mEijiBtn = (Button)findViewById(R.id.eijibtn);
         mEijiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setCodePage( 1 );
                 dispMode();
+            }
+        });
+
+        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Btn", "btn");
             }
         });
 
@@ -96,8 +105,10 @@ public class MainActivity extends AppCompatActivity {
         mHidEg.onKeyDown(e.getAction() == KeyEvent.ACTION_DOWN, e.getKeyCode() );
         if( ! mHidEg.getOutput().isEmpty()){
             mKeyDisp.setText(buffer+mHidEg.getOutput());
+            mHidDisp.setText(mHidDisp.getText().toString()+mHidEg.getHid()+",");
             if( mHidEg.getOutput().equals("ESC")){
                 mKeyDisp.setText("");
+                mHidDisp.setText("");
             }
         }
         //return super.dispatchKeyEvent(e);

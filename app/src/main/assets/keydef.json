@@ -8,7 +8,7 @@
         { "key":59, "str": "SHIFT_LEFT" }, { "key":60, "str": "SHIFT_RIGHT" },
         { "key":115, "str": "CAPS_LOCK" },
         { "key":214, "str": "HENKAN" },{ "key": 215, "str":"KATAKANA_HIRAGANA" }, { "key":213, "str": "MUHENKAN" },
-        { "key": 1000, "str":"LONGDISTCODE" },{ "key": 1001, "str":"REPEATCODE" }
+        { "key": 1000, "str":"LONGDISTCODE" },{ "key": 1001, "str":"REPEATCODE" },{ "key": 1002, "str":"LONGPUSHCODE" }
       ]
     },
     {
@@ -255,6 +255,7 @@
         {"name": "Loya", "in":[ "MUHENKAN" ], "ctbl":"Mdfy"},
         {"name": "Roya", "in":[ "HENKAN", "SPACE" ], "ctbl":"Mdfy" },
         {"name": "Func", "in":[ "LONGDISTCODE" ], "ctbl":"Mdfy" },
+        {"name": "LPush", "in":[ "LONGPUSHCODE" ], "ctbl":"Mdfy" },
         {"name": "Rep", "in":[ "REPEATCODE" ], "ctbl":"Mdfy" },
         {"name": "Char", "notin":[ "HENKAN","MUHENKAN","SPACE","CAPS_LOCK",
           "SHIFT_LEFT","SHIFT_RIGHT","REPEATCODE", "LONGDISTCODE"  ], "ctbl":"Mdfy" }
@@ -304,6 +305,16 @@
           "stat": ["Roya","Char","Rep"],
           "out": [{"ctbl": "OkanaRoya", "cno":1 }],
           "rmno": [2]
+        },
+        {
+          "stat": ["Roya","Char","_Func"],
+          "out": [{"ctbl": "OkanaRoya", "cno":1 }],
+          "rmno": [2,1,0]
+        },
+        {
+          "stat": ["Loya","Char","_Func"],
+          "out": [{"ctbl": "OkanaLoya", "cno":1 }],
+          "rmno": [2,1,0]
         },
         {
           "stat": ["Char","Loya","Rep"],
@@ -381,8 +392,18 @@
           "rmno": [1,0]
         },
         {
+          "stat": ["Loya","_LPush"],
+          "out": [{"ctbl": "OkanaNone", "cno":1 }],
+          "rmno": [1,0]
+        },
+        {
           "stat": ["Roya","_Roya"],
           "out": [{"ctbl": "OkanaNone", "cno":0 }],
+          "rmno": [1,0]
+        },
+        {
+          "stat": ["Roya","_LPush"],
+          "out": [{"ctbl": "OkanaNone", "cno":1 }],
           "rmno": [1,0]
         },
         {
@@ -403,14 +424,129 @@
       ]
     }
   ],
-  "s2h": [
-    {
-      "name": "hid",
-      "tbl": [
-        {
-          "str": "a", "seq": [ 0, 1, 2 ]
-        }
+  "s2h": {
+      "hid": [
+        { "str": "a", "key": 4 },
+        { "str": "b", "key": 5 },
+        { "str": "c", "key": 6 },
+        { "str": "d", "key": 7 },
+        { "str": "e", "key": 8 },
+        { "str": "f", "key": 9 },
+        { "str": "g", "key": 10 },
+        { "str": "h", "key": 11 },
+        { "str": "i", "key": 12 },
+        { "str": "j", "key": 13 },
+        { "str": "k", "key": 14 },
+        { "str": "l", "key": 15 },
+        { "str": "m", "key": 16 },
+        { "str": "n", "key": 17 },
+        { "str": "o", "key": 18 },
+        { "str": "p", "key": 19 },
+        { "str": "q", "key": 20 },
+        { "str": "r", "key": 21 },
+        { "str": "s", "key": 22 },
+        { "str": "t", "key": 23 },
+        { "str": "u", "key": 24 },
+        { "str": "v", "key": 25 },
+        { "str": "w", "key": 26 },
+        { "str": "x", "key": 27 },
+        { "str": "y", "key": 28 },
+        { "str": "z", "key": 29 },
+        { "str": "1", "key": 30 },
+        { "str": "2", "key": 31 },
+        { "str": "3", "key": 32 },
+        { "str": "4", "key": 33 },
+        { "str": "5", "key": 34 },
+        { "str": "6", "key": 35 },
+        { "str": "7", "key": 36 },
+        { "str": "8", "key": 37 },
+        { "str": "9", "key": 38 },
+        { "str": "0", "key": 39 }
+      ],
+      "romaji": [
+        {"str": "あ", "seq":[ "a" ]},
+        {"str": "い", "seq":[ "i" ]},
+        {"str": "う", "seq":[ "u" ]},
+        {"str": "え", "seq":[ "e" ]},
+        {"str": "お", "seq":[ "o" ]},
+        {"str": "か", "seq":[ "k", "a" ]},
+        {"str": "き", "seq":[ "k", "i"]},
+        {"str": "く","seq":[ "k", "u"]},
+        {"str": "け","seq":[ "k", "e"]},
+        {"str": "こ","seq":[ "k", "o"]},
+        {"str": "さ", "seq":[ "s", "a" ]},
+        {"str": "し", "seq":[ "s", "i"]},
+        {"str": "す","seq":[ "s", "u"]},
+        {"str": "せ","seq":[ "s", "e"]},
+        {"str": "そ","seq":[ "s", "o"]},
+        {"str": "た", "seq":[ "t", "a" ]},
+        {"str": "ち", "seq":[ "t", "i"]},
+        {"str": "つ","seq":[ "t", "u"]},
+        {"str": "て","seq":[ "t", "e"]},
+        {"str": "と","seq":[ "t", "o"]},
+        {"str": "な", "seq":[ "n", "a" ]},
+        {"str": "に", "seq":[ "n", "i"]},
+        {"str": "ぬ","seq":[ "n", "u"]},
+        {"str": "ね","seq":[ "n", "e"]},
+        {"str": "の","seq":[ "n", "o"]},
+        {"str": "は", "seq":[ "h", "a" ]},
+        {"str": "ひ", "seq":[ "h", "i"]},
+        {"str": "ふ","seq":[ "h", "u"]},
+        {"str": "へ","seq":[ "h", "e"]},
+        {"str": "ほ","seq":[ "h", "o"]},
+        {"str": "ま", "seq":[ "m", "a" ]},
+        {"str": "み", "seq":[ "m", "i"]},
+        {"str": "む","seq":[ "m", "u"]},
+        {"str": "め","seq":[ "m", "e"]},
+        {"str": "も","seq":[ "m", "o"]},
+        {"str": "や", "seq":[ "y", "a" ]},
+        {"str": "ゆ","seq":[ "y", "u"]},
+        {"str": "よ","seq":[ "y", "o"]},
+        {"str": "ら", "seq":[ "r", "a" ]},
+        {"str": "り", "seq":[ "r", "i"]},
+        {"str": "る","seq":[ "r", "u"]},
+        {"str": "れ","seq":[ "r", "e"]},
+        {"str": "ろ","seq":[ "r", "o"]},
+        {"str": "わ", "seq":[ "w", "a" ]},
+        {"str": "を", "seq":[ "w", "o" ]},
+        {"str": "ん", "seq":[ "n", "n" ]},
+        {"str": "が", "seq":[ "g", "a" ]},
+        {"str": "ぎ", "seq":[ "g", "i"]},
+        {"str": "ぐ","seq":[ "g", "u"]},
+        {"str": "げ","seq":[ "g", "e"]},
+        {"str": "ご","seq":[ "g", "o"]},
+        {"str": "ざ", "seq":[ "z", "a" ]},
+        {"str": "じ", "seq":[ "z", "i"]},
+        {"str": "ず","seq":[ "z", "u"]},
+        {"str": "ぜ","seq":[ "z", "e"]},
+        {"str": "ぞ","seq":[ "z", "o"]},
+        {"str": "だ", "seq":[ "d", "a" ]},
+        {"str": "ぢ", "seq":[ "d", "i"]},
+        {"str": "づ","seq":[ "d", "u"]},
+        {"str": "で","seq":[ "d", "e"]},
+        {"str": "ど","seq":[ "d", "o"]},
+        {"str": "ば", "seq":[ "b", "a" ]},
+        {"str": "び", "seq":[ "b", "i"]},
+        {"str": "ぶ","seq":[ "b", "u"]},
+        {"str": "べ","seq":[ "b", "e"]},
+        {"str": "ぼ","seq":[ "b", "o"]},
+        {"str": "ぱ", "seq":[ "p", "a" ]},
+        {"str": "ぴ", "seq":[ "p", "i"]},
+        {"str": "ぶ","seq":[ "p", "u"]},
+        {"str": "ぺ","seq":[ "p", "e"]},
+        {"str": "ぽ","seq":[ "p", "o"]},
+        {"str": "ゃ", "seq":[ "l","y","a" ]},
+        {"str": "ゅ", "seq":[ "l","y","u" ]},
+        {"str": "ょ", "seq":[ "l","y","o" ]},
+        {"str": "っ", "seq":[ "l","t","u" ]},
+        {"str": "ぁ", "seq":[ "l","a" ]},
+        {"str": "ぃ", "seq":[ "l","i" ]},
+        {"str": "ぅ", "seq":[ "l","u" ]},
+        {"str": "ぇ", "seq":[ "l","e" ]},
+        {"str": "ぉ", "seq":[ "l","o" ]},
+        {"str": "ヴ", "seq":[ "v","u" ]},
+        {"str": "ゐ", "seq":[ "w","y","i" ]},
+        {"str": "ゑ", "seq":[ "w","y","e" ]}
       ]
     }
-  ]
 }
